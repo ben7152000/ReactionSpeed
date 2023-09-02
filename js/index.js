@@ -117,7 +117,7 @@ function startClickHandler () {
   goToGamePage()
   getSymbols()
   startCountdown(gameTime)
-  time.innerHTML = (Math.floor(gameTime) + 1).toString()
+  time.innerHTML = (Math.floor(gameTime)).toString()
   randomGetSymbols()
 }
 
