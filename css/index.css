@@ -165,13 +165,17 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d1d1d1;
+    background-color: #dddddd;
     border: 1px solid #000000;
     border-radius: 10px;
 }
 
 .symbol {
-    font-size: 122px;
+    width: 122px;
+    height: 122px;
+    font-size: 100px;
+    text-align: center;
+    line-height: 122px;
 }
 
 .check {

@@ -4,6 +4,11 @@
 const SPACE = 'Space'
 const FLEX = 'flex'
 const NONE = 'none'
+const CIRCLE = '&#9679;'
+const DIAMOND = '&#9670;'
+const TRIANGLE = '&#9650;'
+const CROSS = '&#10010;'
+const STAR = '&#9733;'
 
 /**
  * Dom
@@ -30,7 +35,7 @@ const timerBar = document.querySelector('.timer-bar')
 /**
  * 變數
  */
-const symbols = ['▲', '●', '★', '✚', '♦']
+const symbols = [CIRCLE, DIAMOND, DIAMOND, DIAMOND, TRIANGLE, TRIANGLE, TRIANGLE, CROSS, STAR]
 let correctCounts = 0
 let incorrectCounts = 0
 let missedCounts = 0
