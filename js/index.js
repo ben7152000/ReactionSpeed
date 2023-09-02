@@ -4,11 +4,11 @@
 const SPACE = 'Space'
 const FLEX = 'flex'
 const NONE = 'none'
-const CIRCLE = '&#9679;'
-const DIAMOND = '&#9670;'
-const TRIANGLE = '&#9650;'
-const CROSS = '&#10010;'
-const STAR = '&#9733;'
+const CIRCLE = 'circle'
+const DIAMOND = 'diamond'
+const TRIANGLE = 'triangle'
+const CROSS = 'cross'
+const STAR = 'star'
 
 /**
  * Dom
@@ -35,7 +35,7 @@ const timerBar = document.querySelector('.timer-bar')
 /**
  * 變數
  */
-const symbols = [CIRCLE, DIAMOND, DIAMOND, DIAMOND, TRIANGLE, TRIANGLE, TRIANGLE, CROSS, STAR]
+const symbols = [DIAMOND, DIAMOND, DIAMOND, TRIANGLE, TRIANGLE, TRIANGLE, CROSS, STAR, CIRCLE]
 let correctCounts = 0
 let incorrectCounts = 0
 let missedCounts = 0
@@ -48,6 +48,8 @@ const gameTime = 2 // 分鐘
 const randomSymbolTime = 1 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
+const imgLeft = document.createElement("img")
+const imgRight = document.createElement("img")
 
 /**
  * 監聽
@@ -116,11 +118,18 @@ function resetResult() {
 function startClickHandler () {
   goToGamePage()
   getSymbols()
-  startCountdown(gameTime)
-  time.innerHTML = (Math.floor(gameTime)).toString()
   randomGetSymbols()
+  startCountdown(gameTime)
+  if (Math.floor(gameTime) === 1) {
+    time.innerHTML = `${Math.floor(gameTime)} minute to go`
+  } else {
+    time.innerHTML = `${Math.floor(gameTime)} minutes to go`
+  }
 }
 
+/**
+ * 隨機圖片
+ */
 function randomGetSymbols() {
   clearInterval(randomInterval)
   randomInterval = setInterval(() => {
@@ -144,8 +153,10 @@ function getSymbols() {
   getRandomCounts++
   leftSymbolItem = randomSymbol()
   rightSymbolItem = randomSymbol()
-  leftSymbol.innerHTML = leftSymbolItem
-  rightSymbol.innerHTML = rightSymbolItem
+  imgLeft.src = `./assets/${leftSymbolItem}.png`
+  imgRight.src = `./assets/${rightSymbolItem}.png`
+  leftSymbol.appendChild(imgLeft)
+  rightSymbol.appendChild(imgRight)
 }
 
 /**
@@ -217,10 +228,10 @@ function startCountdown(duration) {
   function updateCountdown() {
     const minutes = Math.floor(timer / 60)
 
-    if (timer === gameTime * 60) {
-      time.innerHTML = minutes.toString()
+    if ((minutes + 1) === 1) {
+      time.innerHTML = `${(minutes + 1).toString()} minute to go`
     } else {
-      time.innerHTML = (minutes + 1).toString()
+      time.innerHTML = `${(minutes + 1).toString()} minutes to go`
     }
 
     if (timeWidth >= 0) {

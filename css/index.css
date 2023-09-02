@@ -170,12 +170,9 @@ img {
     border-radius: 10px;
 }
 
-.symbol {
-    width: 122px;
-    height: 122px;
-    font-size: 100px;
-    text-align: center;
-    line-height: 122px;
+.symbol img {
+    width: 80px;
+    height: 80px;
 }
 
 .check {
