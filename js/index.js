@@ -39,7 +39,7 @@ let getRandomCounts = 0
 let leftSymbolItem = ''
 let rightSymbolItem = ''
 let alreadyEqual = false // 是否點擊相同
-const gameTime = 0.3 // 分鐘
+const gameTime = 2 // 分鐘
 const randomSymbolTime = 1 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
