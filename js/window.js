@@ -11,17 +11,17 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (e) {
 /**
  * 禁止右鍵
  */
-// document.addEventListener('contextmenu', function(e) {
-//   e.preventDefault();
-// });
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
 
 /**
  * 禁止用調試工具
  */
-// const threshold = 160
-// const check = setInterval(function () {
-//   if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-//     window.location.reload()
-//   }
-// }, 1000)
-// check()
+const threshold = 160
+const check = setInterval(function () {
+  if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+    window.location.reload()
+  }
+}, 1000)
+check()
