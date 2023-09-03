@@ -93,7 +93,7 @@ function handleKeydown(e) {
 }
 
 /**
-    重新開始
+ * 重新開始
  */
 function restartClickHandler() {
   goToInstructionPage()
@@ -101,7 +101,7 @@ function restartClickHandler() {
 }
 
 /**
-    重置結果數據
+ * 重置結果數據
  */
 function resetResult() {
   correctCounts = 0
