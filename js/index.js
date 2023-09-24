@@ -161,46 +161,63 @@ function getSymbols() {
   getRandomCounts++
   leftSymbolItem = randomSymbol()
   rightSymbolItem = randomSymbol()
-  leftCircle.style.visibility = HIDDEN
-  leftCross.style.visibility = HIDDEN
-  leftDiamond.style.visibility = HIDDEN
-  leftStar.style.visibility = HIDDEN
-  leftTriangle.style.visibility = HIDDEN
-  rightCircle.style.visibility = HIDDEN
-  rightCross.style.visibility = HIDDEN
-  rightDiamond.style.visibility = HIDDEN
-  rightStar.style.visibility = HIDDEN
-  rightTriangle.style.visibility = HIDDEN
-  if (leftSymbolItem === CIRCLE) {
-    leftCircle.style.visibility = VISIBLE
+
+  const leftSymbols = [leftCircle, leftCross, leftDiamond, leftStar, leftTriangle]
+  const rightSymbols = [rightCircle, rightCross, rightDiamond, rightStar, rightTriangle]
+
+  hideAllSymbols(leftSymbols)
+  hideAllSymbols(rightSymbols)
+
+  showSymbol(leftSymbolItem, leftSymbols)
+  showSymbol(rightSymbolItem, rightSymbols)
+}
+
+/**
+ * 判斷圖形隱藏圖片
+ */
+function hideAllSymbols(symbols) {
+  symbols.forEach(symbol => {
+    hiddenSymbols(symbol)
+  })
+}
+
+/**
+ * 判斷圖形顯示圖片
+ */
+function showSymbol(symbolType, symbols) {
+  switch (symbolType) {
+    case CIRCLE:
+      visibleSymbols(symbols[0]);
+      break;
+    case CROSS:
+      visibleSymbols(symbols[1]);
+      break;
+    case DIAMOND:
+      visibleSymbols(symbols[2]);
+      break;
+    case STAR:
+      visibleSymbols(symbols[3]);
+      break;
+    case TRIANGLE:
+      visibleSymbols(symbols[4]);
+      break;
+    default:
+      break;
   }
-  if (leftSymbolItem === CROSS) {
-    leftCross.style.visibility = VISIBLE
-  }
-  if (leftSymbolItem === DIAMOND) {
-    leftDiamond.style.visibility = VISIBLE
-  }
-  if (leftSymbolItem === STAR) {
-    leftStar.style.visibility = VISIBLE
-  }
-  if (leftSymbolItem === TRIANGLE) {
-    leftTriangle.style.visibility = VISIBLE
-  }
-  if (rightSymbolItem === CIRCLE) {
-    rightCircle.style.visibility = VISIBLE
-  }
-  if (rightSymbolItem === CROSS) {
-    rightCross.style.visibility = VISIBLE
-  }
-  if (rightSymbolItem === DIAMOND) {
-    rightDiamond.style.visibility = VISIBLE
-  }
-  if (rightSymbolItem === STAR) {
-    rightStar.style.visibility = VISIBLE
-  }
-  if (rightSymbolItem === TRIANGLE) {
-    rightTriangle.style.visibility = VISIBLE
-  }
+}
+
+/**
+ * 隱藏圖片
+ */
+function hiddenSymbols(object) {
+  object.style.visibility = HIDDEN
+}
+
+/**
+ * 顯示圖片
+ */
+function visibleSymbols(object) {
+  object.style.visibility = VISIBLE
 }
 
 /**
