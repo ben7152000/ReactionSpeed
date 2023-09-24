@@ -4,6 +4,8 @@
 const SPACE = 'Space'
 const FLEX = 'flex'
 const NONE = 'none'
+const VISIBLE = 'visible'
+const HIDDEN = 'hidden'
 const CIRCLE = 'circle'
 const DIAMOND = 'diamond'
 const TRIANGLE = 'triangle'
@@ -23,8 +25,16 @@ const correct = document.querySelector('#correct')
 const incorrect = document.querySelector('#incorrect')
 const missed = document.querySelector('#missed')
 const performance = document.querySelector('#performance')
-const leftSymbol = document.querySelector('#left-symbol')
-const rightSymbol = document.querySelector('#right-symbol')
+const leftCircle = document.querySelector('.left-circle')
+const leftCross = document.querySelector('.left-cross')
+const leftDiamond = document.querySelector('.left-diamond')
+const leftStar = document.querySelector('.left-star')
+const leftTriangle = document.querySelector('.left-triangle')
+const rightCircle = document.querySelector('.right-circle')
+const rightCross = document.querySelector('.right-cross')
+const rightDiamond = document.querySelector('.right-diamond')
+const rightStar = document.querySelector('.right-star')
+const rightTriangle = document.querySelector('.right-triangle')
 const leftCard = document.querySelector('.left-card')
 const rightCard = document.querySelector('.right-card')
 const checkTrue = document.querySelector('#check-true')
@@ -48,8 +58,6 @@ const gameTime = 2 // 分鐘
 const randomSymbolTime = 1 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
-const imgLeft = document.createElement("img")
-const imgRight = document.createElement("img")
 
 /**
  * 監聽
@@ -153,10 +161,46 @@ function getSymbols() {
   getRandomCounts++
   leftSymbolItem = randomSymbol()
   rightSymbolItem = randomSymbol()
-  imgLeft.src = `./assets/${leftSymbolItem}.png`
-  imgRight.src = `./assets/${rightSymbolItem}.png`
-  leftSymbol.appendChild(imgLeft)
-  rightSymbol.appendChild(imgRight)
+  leftCircle.style.visibility = HIDDEN
+  leftCross.style.visibility = HIDDEN
+  leftDiamond.style.visibility = HIDDEN
+  leftStar.style.visibility = HIDDEN
+  leftTriangle.style.visibility = HIDDEN
+  rightCircle.style.visibility = HIDDEN
+  rightCross.style.visibility = HIDDEN
+  rightDiamond.style.visibility = HIDDEN
+  rightStar.style.visibility = HIDDEN
+  rightTriangle.style.visibility = HIDDEN
+  if (leftSymbolItem === CIRCLE) {
+    leftCircle.style.visibility = VISIBLE
+  }
+  if (leftSymbolItem === CROSS) {
+    leftCross.style.visibility = VISIBLE
+  }
+  if (leftSymbolItem === DIAMOND) {
+    leftDiamond.style.visibility = VISIBLE
+  }
+  if (leftSymbolItem === STAR) {
+    leftStar.style.visibility = VISIBLE
+  }
+  if (leftSymbolItem === TRIANGLE) {
+    leftTriangle.style.visibility = VISIBLE
+  }
+  if (rightSymbolItem === CIRCLE) {
+    rightCircle.style.visibility = VISIBLE
+  }
+  if (rightSymbolItem === CROSS) {
+    rightCross.style.visibility = VISIBLE
+  }
+  if (rightSymbolItem === DIAMOND) {
+    rightDiamond.style.visibility = VISIBLE
+  }
+  if (rightSymbolItem === STAR) {
+    rightStar.style.visibility = VISIBLE
+  }
+  if (rightSymbolItem === TRIANGLE) {
+    rightTriangle.style.visibility = VISIBLE
+  }
 }
 
 /**

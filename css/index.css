@@ -170,9 +170,18 @@ img {
     border-radius: 10px;
 }
 
-.symbol img {
+.symbol {
+    position: relative;
     width: 80px;
     height: 80px;
+}
+
+.symbol img {
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    visibility: hidden;
 }
 
 .check {
