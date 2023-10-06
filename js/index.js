@@ -63,7 +63,6 @@ const randomSymbolTime = 1 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
 const userData = {
-  game: 'reactionSpeed',
   account: 'FTTW',
   password: 'Afttw4785',
 }
@@ -108,8 +107,6 @@ function loginHandler() {
   if (userAccount === userData.account && userPassword === userData.password) {
     goToInstructionPage()
     loginInfo.style.display = NONE
-    userData.loginTime = new Date().getTime().toString()
-    localStorage.setItem('userInfo', JSON.stringify(userData))
   } else {
     alert('帳號或密碼錯誤')
   }
