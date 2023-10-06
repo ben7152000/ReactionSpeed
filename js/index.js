@@ -110,6 +110,8 @@ function loginHandler() {
     loginInfo.style.display = NONE
     userData.loginTime = new Date().getTime().toString()
     localStorage.setItem('userInfo', JSON.stringify(userData))
+  } else {
+    alert('帳號或密碼錯誤')
   }
 }
 
