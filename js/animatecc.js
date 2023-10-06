@@ -43,9 +43,30 @@ function handleComplete(evt,comp) {
   fnStartAnimation();
 }
 
+function checkLoginStatue() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') || {})
+  const currentTime = new Date().getTime()
+  const elapsedTime = currentTime - userInfo.loginTime
+    if (elapsedTime < 24 * 60 * 60 * 1000) {
+      return userInfo
+    }
+  return {}
+}
+
 function animationEnd() {
+  const userData = {
+    game: 'reactionSpeed',
+    account: 'FTTW',
+    password: 'Afttw4785',
+  }
   const logo = document.querySelector('.logo')
+  const loginInfo = document.querySelector('.login-info')
   const mainInfo = document.querySelector('.main-info')
+  const userInfo = checkLoginStatue()
   logo.style.display = 'block'
-  mainInfo.style.display = 'flex'
+  if (userInfo.game === userData.game && userInfo.account === userData.account && userInfo.password === userData.password) {
+    mainInfo.style.display = 'flex'
+  } else {
+    loginInfo.style.display = 'flex'
+  }
 }

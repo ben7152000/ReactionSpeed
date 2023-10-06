@@ -13,11 +13,22 @@
 </head>
 <body onload="init();" style="margin:0px;">
 <div id="app">
-
-    <!--  Logo  -->
+    <!--  logo  -->
     <div class="logo">
         <img src="./assets/fttw-logo.png" alt="fttw-logo">
     </div>
+
+    <from class="login-info">
+        <div class="account">
+            <label>帳號</label>
+            <input name="account" id="account" type="text" placeholder="請輸入帳號" required>
+        </div>
+        <div class="password">
+            <label>密碼</label>
+            <input name="password" id="password" type="password" placeholder="請輸入密碼" required>
+        </div>
+        <button class="btn login">登入</button>
+    </from>
 
     <!--  instructions  -->
     <div class="main-info">
@@ -105,6 +116,6 @@
     </div>
 </div>
 
-<script src="./js/index.js"></script>
+<script type="module" src="./js/index.js"></script>
 </body>
 </html>

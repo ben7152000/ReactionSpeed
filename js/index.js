@@ -41,6 +41,10 @@ const checkTrue = document.querySelector('#check-true')
 const checkFail = document.querySelector('#check-fail')
 const time = document.querySelector('.time')
 const timerBar = document.querySelector('.timer-bar')
+const loginInfo = document.querySelector('.login-info')
+const login = document.querySelector('.login')
+const account = document.querySelector('#account')
+const password = document.querySelector('#password')
 
 /**
  * 變數
@@ -58,6 +62,11 @@ const gameTime = 2 // 分鐘
 const randomSymbolTime = 1 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
+const userData = {
+  game: 'reactionSpeed',
+  account: 'FTTW',
+  password: 'Afttw4785',
+}
 
 /**
  * 監聽
@@ -66,6 +75,7 @@ window.addEventListener('keydown', handleKeydown)
 start.addEventListener('click', startClickHandler)
 equal.addEventListener('click', equalClickHandler)
 restart.addEventListener('click', restartClickHandler)
+login.addEventListener('click', loginHandler)
 
 /**
  * 進到介紹介面
@@ -89,6 +99,18 @@ function goToGamePage() {
 function goToResultPage() {
   gameInfo.style.display = NONE
   resultInfo.style.display = FLEX
+}
+
+function loginHandler() {
+  const userAccount = account.value
+  const userPassword = password.value
+
+  if (userAccount === userData.account && userPassword === userData.password) {
+    goToInstructionPage()
+    loginInfo.style.display = NONE
+    userData.loginTime = new Date().getTime().toString()
+    localStorage.setItem('userInfo', JSON.stringify(userData))
+  }
 }
 
 /**
