@@ -59,6 +59,7 @@ function animationEnd() {
     account: 'FTTW',
     password: 'Afttw4785',
   }
+
   const logo = document.querySelector('.logo')
   const loginInfo = document.querySelector('.login-info')
   const mainInfo = document.querySelector('.main-info')
