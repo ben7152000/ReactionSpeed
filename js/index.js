@@ -100,6 +100,9 @@ function goToResultPage() {
   resultInfo.style.display = FLEX
 }
 
+/**
+ * 登入
+ */
 function loginHandler() {
   const userAccount = account.value
   const userPassword = password.value
