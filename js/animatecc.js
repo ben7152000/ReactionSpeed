@@ -44,7 +44,7 @@ function handleComplete(evt,comp) {
 }
 
 function checkLoginStatue() {
-  const userInfo = JSON.parse(localStorage.getItem('userInfo') || {})
+  const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {}
   const currentTime = new Date().getTime()
   const elapsedTime = currentTime - userInfo.loginTime
     if (elapsedTime < 24 * 60 * 60 * 1000) {
