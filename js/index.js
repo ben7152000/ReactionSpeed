@@ -54,7 +54,7 @@ let correctCounts = 0
 let incorrectCounts = 0
 let missedCounts = 0
 let performanceRate = 0
-let getRandomCounts = 0
+let getRandomTureCounts = 0
 let leftSymbolItem = ''
 let rightSymbolItem = ''
 let alreadyEqual = false // 是否點擊相同
@@ -140,7 +140,7 @@ function resetResult() {
   incorrectCounts = 0
   missedCounts = 0
   performanceRate = 0
-  getRandomCounts = 0
+  getRandomTureCounts = 0
   timerBar.style.width = '0'
 }
 
@@ -182,9 +182,12 @@ function randomSymbol() {
  * 取亂數顯示
  */
 function getSymbols() {
-  getRandomCounts++
   leftSymbolItem = randomSymbol()
   rightSymbolItem = randomSymbol()
+
+  if (leftSymbolItem === rightSymbolItem) {
+    getRandomTureCounts++
+  }
 
   const leftSymbols = [leftCircle, leftCross, leftDiamond, leftStar, leftTriangle]
   const rightSymbols = [rightCircle, rightCross, rightDiamond, rightStar, rightTriangle]
@@ -295,7 +298,7 @@ function removeActive() {
  * 輸出結果
  */
 function outputResult() {
-  missedCounts = getRandomCounts - correctCounts - incorrectCounts
+  missedCounts = getRandomTureCounts - correctCounts
   performanceRate = Math.round((correctCounts / (correctCounts + incorrectCounts + missedCounts)) * 100) || 0
   correct.innerHTML = correctCounts.toString()
   incorrect.innerHTML = incorrectCounts.toString()
