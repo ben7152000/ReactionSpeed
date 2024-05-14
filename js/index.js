@@ -45,6 +45,7 @@ const loginInfo = document.querySelector('.login-info')
 const login = document.querySelector('.login')
 const account = document.querySelector('#account')
 const password = document.querySelector('#password')
+const exitFullScreenDiv = document.querySelector('.exit-full-screen')
 
 /**
  * 變數
@@ -63,7 +64,6 @@ let randomSymbolTime = 0 // 秒
 const delayEqualTime = 2 // 秒
 let randomInterval // 隨機倒數定時器
 let users = []
-const userInfo = { account: '', password: '' }
 
 /**
  * 監聽
@@ -342,24 +342,6 @@ function startCountdown(duration) {
 }
 
 /**
- *  全螢幕模式
- */
-const screenEnlarge = document.querySelector('.screen-enlarge')
-screenEnlarge.addEventListener('click', () => {
-  const element = document.documentElement;
-
-  if (element.requestFullscreen) {
-    element.requestFullscreen();
-  } else if (element.mozRequestFullScreen) {
-    element.mozRequestFullScreen();
-  } else if (element.webkitRequestFullscreen) {
-    element.webkitRequestFullscreen();
-  } else if (element.msRequestFullscreen) {
-    element.msRequestFullscreen();
-  }
-})
-
-/**
  *  API
  */
 const url = 'https://sheets.googleapis.com/v4/spreadsheets'
@@ -372,14 +354,16 @@ fetch(`${url}/${id}/values/${AccountSheet}?alt=json&key=${key}`)
   .then(res => res.json())
   .then(res => {
     const keys = res.values[0]
-    const result = res.values.slice(1).map(row => {
+    users = res.values.slice(1).map(row => {
       const obj = {}
       keys.forEach((key, index) => {
         obj[key.toLowerCase()] = row[index]
       })
       return obj
     })
-    users = result
+  })
+  .catch(e => {
+    console.error(e)
   })
 
 fetch(`${url}/${id}/values/${paramsSheet}?alt=json&key=${key}`)
@@ -388,3 +372,44 @@ fetch(`${url}/${id}/values/${paramsSheet}?alt=json&key=${key}`)
     gameTime = res.values[1][1]
     randomSymbolTime = res.values[2][1]
   })
+  .catch(e => {
+    console.error(e)
+  })
+
+const enterFullScreen = () => {
+  const element = document.documentElement;
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
+}
+
+const exitFullScreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
+}
+
+const setupFullScreenEvents = () => {
+  const screenEnlarge = document.querySelector('.screen-enlarge')
+  const exitFullScreenBtn = document.querySelector('.exit-full-screen-btn')
+
+  screenEnlarge.addEventListener('click', enterFullScreen)
+  exitFullScreenBtn.addEventListener('click', exitFullScreen)
+  document.addEventListener('fullscreenchange', () => {
+    exitFullScreenDiv.style.display = document.fullscreenElement ? FLEX : NONE
+  });
+}
+
+setupFullScreenEvents()
